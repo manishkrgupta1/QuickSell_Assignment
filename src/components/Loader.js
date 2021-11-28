@@ -5,7 +5,7 @@ class Loader extends React.Component{
         return (
             <div className="flex">
                 <div className = "loader"></div>
-                <div ><p>Saving counter value</p></div>
+                <div ><p>Saving Counter Value</p></div>
             </div>
         )
     }
