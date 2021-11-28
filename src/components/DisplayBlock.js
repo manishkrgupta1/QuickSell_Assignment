@@ -4,14 +4,14 @@ import Hightlight from './Highlight';
 import Loader from './Loader'
 import '../index.css';
 
-const MAX_VALUE =  1000;
+const MAX_VALUE = process.env.REACT_APP_MAX_VALUE || 1000;
 
 class DisplayBlock extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            count: 1,
+            count: 0,
             loader: false
         };
         this.handleManualInput=this.handleManualInput.bind(this);
@@ -69,7 +69,7 @@ class DisplayBlock extends React.Component {
     }
 
     handleManualInput(event) {
-        this.setState({ count: Math.min(event.target.value, MAX_VALUE) },  function () {
+        this.setState({ count: event.target.value},  function () {
             this.putRequest();
         });
     }
@@ -88,7 +88,7 @@ class DisplayBlock extends React.Component {
                             <b>-</b>
                         </button>
 
-                        <input className="block" id="display" type="number" value={this.state.count} onChange={this.handleManualInput}></input>
+                        <input className="block" id="display" type="number" value={this.state.count} onChange={this.handleManualInput}/>
 
                         <button className="block" id="plus" onClick={this.increament}>
                             <b>+</b>
