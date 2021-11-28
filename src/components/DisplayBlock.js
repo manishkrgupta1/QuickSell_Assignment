@@ -4,7 +4,7 @@ import Hightlight from './Highlight';
 import Loader from './Loader'
 import '../index.css';
 
-const MAX_VALUE = process.env.REACT_APP_MAX_VALUE || 1000;
+const MAX_VALUE =  1000;
 
 class DisplayBlock extends React.Component {
 
@@ -14,15 +14,17 @@ class DisplayBlock extends React.Component {
             count: 1,
             loader: false
         };
+        this.handleManualInput=this.handleManualInput.bind(this);
+        this.increament=this.increament.bind(this);
+        this.decreament=this.decreament.bind(this);
     }
 
     componentDidMount() {
-        //will initialize count here
 
         axios.get("https://interview-8e4c5-default-rtdb.firebaseio.com/front-end/counter1.json")
             .then(res => {
                 if (res.data !== null) {
-                    this.setState({ count: res.data },);
+                    this.setState({ count: res.data });
                 }
 
             })
@@ -82,13 +84,13 @@ class DisplayBlock extends React.Component {
 
                     <div className="main">
 
-                        <button className="block" id="minus" onClick={this.decreament.bind(this)}>
+                        <button className="block" id="minus" onClick={this.decreament}>
                             <b>-</b>
                         </button>
 
-                        <input className="block" id="display" type="number" value={this.state.count} onChange={this.handleManualInput.bind(this)}></input>
+                        <input className="block" id="display" type="number" value={this.state.count} onChange={this.handleManualInput}></input>
 
-                        <button className="block" id="plus" onClick={this.increament.bind(this)}>
+                        <button className="block" id="plus" onClick={this.increament}>
                             <b>+</b>
                         </button>
 
