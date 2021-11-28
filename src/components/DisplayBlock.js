@@ -25,6 +25,8 @@ class DisplayBlock extends React.Component {
             .then(res => {
                 if (res.data !== null) {
                     this.setState({ count: res.data });
+                }else{
+                    this.setState({ count: 1 });
                 }
 
             })
