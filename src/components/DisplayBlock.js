@@ -71,9 +71,15 @@ class DisplayBlock extends React.Component {
     }
 
     handleManualInput(event) {
-        this.setState({ count: event.target.value},  function () {
+        if(event.target.value){
+        this.setState({count: Math.min(event.target.value, MAX_VALUE)},  function () {
             this.putRequest();
         });
+        }else{
+            this.setState({count: event.target.value},  function () {
+                this.putRequest();
+            });
+        }
     }
 
     render() {
